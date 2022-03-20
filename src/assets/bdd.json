@@ -1,26 +1,26 @@
 [
   {
     "name": "Nyobé",
-    "hp": "19",
-    "maxHp": "19",
+    "hp": 19,
+    "maxHp": 19,
     "token": "assets/tokens/nyobe.png"
   },
   {
     "name": "Larévell",
-    "hp": "14",
-    "maxHp": "14",
+    "hp": 14,
+    "maxHp": 14,
     "token": "assets/tokens/larevell.png"
   },
   {
     "name": "Vipérine",
-    "hp": "19",
-    "maxHp": "19",
+    "hp": 19,
+    "maxHp": 19,
     "token": "assets/tokens/viperine.png"
   },
   {
     "name": "Graldur",
-    "hp": "26",
-    "maxHp": "26",
+    "hp": 26,
+    "maxHp": 26,
     "token": "assets/tokens/graldur.png"
   }
 ]

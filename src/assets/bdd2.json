@@ -1,26 +1,26 @@
 [
   {
     "name": "Karoom",
-    "hp": "20",
-    "maxHp": "20",
+    "hp": 20,
+    "maxHp": 20,
     "token": "assets/tokens/karoom.png"
   },
   {
     "name": "Ealdor",
-    "hp": "18",
-    "maxHp": "18",
+    "hp": 18,
+    "maxHp": 18,
     "token": "assets/tokens/ealdor.png"
   },
   {
     "name": "Brokk",
-    "hp": "19",
-    "maxHp": "19",
+    "hp": 19,
+    "maxHp": 19,
     "token": "assets/tokens/brokk.png"
   },
   {
     "name": "Tilt",
-    "hp": "14",
-    "maxHp": "14",
+    "hp": 14,
+    "maxHp": 14,
     "token": "assets/tokens/tilt.png"
   }
 ]

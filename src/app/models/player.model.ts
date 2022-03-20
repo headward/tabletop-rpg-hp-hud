@@ -1,7 +1,7 @@
 export class Player {
     constructor(public name: string,
-                public hp: string,
-                public maxHp: string,
+                public hp: number,
+                public maxHp: number,
                 public token: string) {
         this.name = name;
         this.hp = hp;

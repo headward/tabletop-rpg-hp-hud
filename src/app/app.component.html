@@ -4,22 +4,34 @@
     </div>
     <div class="container mx-auto">
         <div class="grid grid-cols-12 gap-10">
-            <div class="col-span-6 lg:col-span-6 border-slate-300 bg-slate-100 rounded-md p-5" [ngClass]="{'bg-red-100':getHp(player.hp)<=0}" *ngFor="let player of players">
-                <div class="flex flex-row justify-between">
-                    <img class="w-20 h-20 rounded-full border-2 border-green-800" [ngClass]="{'border-red-800 grayscale':getHp(player.hp)<=0}" src="{{player.token}}" alt="">
-                    <div class="w-2/3 text-slate-600">
-                        <p class="text-xl font-information">{{player.name}}</p>
-                        <div class="flex flex-row mb-5 justify-between">
-                            <label class="font-information" for="{{slugify(player.name)}}_pv">Points de vie</label>
-                            <input class="w-20" type="number" name="{{slugify(player.name)}}_pv" id="{{slugify(player.name)}}_pv"
-                                   [value]="player.hp"
-                                   (input)="player.hp=setHpValue($event)"
-                                    max="{{player.maxHp}}"
-                                    min="0">
+            <div class="col-span-6 lg:col-span-6 border-slate-300 bg-slate-100 rounded-md p-5" [ngClass]="{'bg-red-100':player.hp<=0}" *ngFor="let player of players">
+                <div class="flex flex-row justify-between items-center">
+                    <img class="w-20 h-20 rounded-full border-2 border-green-800" [ngClass]="{'border-red-800 grayscale':player.hp<=0}" src="{{player.token}}" alt="">
+                    <div class="w-5/6 text-slate-600">
+                        <input class="w-20" type="number" name="{{slugify(player.name)}}_pv" id="{{slugify(player.name)}}_pv"
+                               [value]="player.hp"
+                               (input)="player.hp=setHpValue($event)"
+                               max="{{player.maxHp}}"
+                               min="0" hidden>
+                        <div class="flex flex-row justify-between">
+                            <div class="flex flex-col">
+                                <p class="text-xl font-information">{{player.name}}</p>
+                            </div>
+                            <div class="flex flex-row w-1/5 justify-between">
+                                <div class="bg-red-900 rounded-full w-10 h-10 p-2 cursor-pointer" (click)="hitPlayer(player)">
+                                    <svg-icon src="assets/icons/sword.svg" class="w-full" [applyClass]="true"></svg-icon>
+                                </div>
+                                <div class="bg-green-900 rounded-full w-10 h-10 p-2 cursor-pointer" (click)="healPlayer(player)">
+                                    <svg-icon src="assets/icons/health.svg" class="w-full" [applyClass]="true"></svg-icon>
+                                </div>
+                            </div>
                         </div>
-                        <div class="h-7 w-full bg-red-500 relative">
-                            <p class="text-l text-white font-bold text-center absolute w-full z-20 font-details">{{player.hp}} / {{player.maxHp}}</p>
-                            <div class="absolute top-0 bottom-0 left-0 h-full bg-green-900 max-w-full z-10" style="width:{{getCurrentHp(player.hp, player.maxHp)}}%">
+                        <div class="mt-5">
+                            <p class="font-information">Points de vie</p>
+                            <div class="h-7 w-full bg-red-500 relative">
+                                <p class="text-l text-white font-bold text-center absolute w-full z-20 font-details">{{player.hp.toString()}} / {{player.maxHp.toString()}}</p>
+                                <div class="absolute top-0 bottom-0 left-0 h-full bg-green-900 max-w-full z-10" style="width:{{getCurrentHp(player.hp, player.maxHp)}}%">
+                                </div>
                             </div>
                         </div>
                     </div>

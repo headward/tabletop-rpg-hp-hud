@@ -18,23 +18,32 @@ export class AppComponent implements OnInit {
     this.players = bdd;
   }
 
-  setHpValue(event: Event): string {
-    return (event.target as HTMLInputElement).value;
+  setHpValue(event: Event): number {
+    return Number((event.target as HTMLInputElement).value);
   }
 
-  getCurrentHp(hp:string, maxHp:string): string {
-
-    let currentHp = Number(hp)*100/Number(maxHp);
-
+  getCurrentHp(hp:number, maxHp:number): string {
+    let currentHp = hp*100/maxHp;
     return currentHp.toString();
   }
+
   slugify(input: string): string{
     return this.slugifyPipe.transform(input);
   }
-  getHp(hp:string):number {
-    return Number(hp);
+
+  getHp(hp:number):string {
+    return String(hp);
   }
+
   groupAlive():boolean {
-    return this.players.filter(player => this.getHp(player.hp) <= 0).length === this.players.length;
+    return this.players.filter(player => player.hp <= 0).length === this.players.length;
+  }
+
+  hitPlayer(player:Player):void {
+    player.hp--
+  }
+
+  healPlayer(player:Player):void {
+    player.hp++
   }
 }
