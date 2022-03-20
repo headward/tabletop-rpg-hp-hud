@@ -3,7 +3,13 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'decorative': 'Permanent Marker',
+        'details': 'Bungee',
+        'information':'Uncial Antiqua',
+      },
+    },
   },
   plugins: [],
 }

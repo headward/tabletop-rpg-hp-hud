@@ -1,7 +1,26 @@
 [
   {
-    "name": "player1",
-    "hp": "10",
-    "maxHp": "10"
+    "name": "Nyobé",
+    "hp": "19",
+    "maxHp": "19",
+    "token": "assets/tokens/nyobe.png"
+  },
+  {
+    "name": "Larévell",
+    "hp": "14",
+    "maxHp": "14",
+    "token": "assets/tokens/larevell.png"
+  },
+  {
+    "name": "Vipérine",
+    "hp": "19",
+    "maxHp": "19",
+    "token": "assets/tokens/viperine.png"
+  },
+  {
+    "name": "Graldur",
+    "hp": "26",
+    "maxHp": "26",
+    "token": "assets/tokens/graldur.png"
   }
 ]

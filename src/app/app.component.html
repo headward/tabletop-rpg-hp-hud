@@ -1,27 +1,34 @@
-<div class="bg-gray-300 h-screen">
+<div class="bg-slate-400 h-screen relative">
     <div class="container mx-auto mb-20">
-        <h1 class="text-4xl text-center">Le donjon de Drogon</h1>
+        <h1 class="font-decorative text-slate-200 text-7xl text-center pt-10">Le donjon de Drogon</h1>
     </div>
-    <div class="grid grid-cols-12 gap-10">
-        <div class="col-span-6 lg:col-span-4" *ngFor="let player of players">
-            <div class="flex flex-row justify-between">
-                <img class="w-20 h-20 rounded-full border-2 border-green-800" src="" alt="">
-                <div class="w-2/3">
-                    <p class="text-xl">{{player.name}}</p>
-                    <div class="flex flex-col mb-5">
-                        <label for="char_1_pv">Point de vie :{{player.hp}}</label>
-                        <input class="w-20" type="number" name="char_1_pv" id="char_1_pv"
-                               [value]="player.hp"
-                               (input)="player.hp=setHpValue($event)">
-                    </div>
-                    <div class="h-4 w-full bg-red-500 relative">
-                        <div class="absolute top-0 bottom-0 left-00 h-full bg-green-900" style="width:{{getCurrentHp(player.hp, player.maxHp)}}%"></div>
+    <div class="container mx-auto">
+        <div class="grid grid-cols-12 gap-10">
+            <div class="col-span-6 lg:col-span-6 border-slate-300 bg-slate-100 rounded-md p-5" [ngClass]="{'bg-red-100':getHp(player.hp)<=0}" *ngFor="let player of players">
+                <div class="flex flex-row justify-between">
+                    <img class="w-20 h-20 rounded-full border-2 border-green-800" [ngClass]="{'border-red-800 grayscale':getHp(player.hp)<=0}" src="{{player.token}}" alt="">
+                    <div class="w-2/3 text-slate-600">
+                        <p class="text-xl font-information">{{player.name}}</p>
+                        <div class="flex flex-row mb-5 justify-between">
+                            <label class="font-information" for="{{slugify(player.name)}}_pv">Points de vie</label>
+                            <input class="w-20" type="number" name="{{slugify(player.name)}}_pv" id="{{slugify(player.name)}}_pv"
+                                   [value]="player.hp"
+                                   (input)="player.hp=setHpValue($event)"
+                                    max="{{player.maxHp}}"
+                                    min="0">
+                        </div>
+                        <div class="h-7 w-full bg-red-500 relative">
+                            <p class="text-l text-white font-bold text-center absolute w-full z-20 font-details">{{player.hp}} / {{player.maxHp}}</p>
+                            <div class="absolute top-0 bottom-0 left-0 h-full bg-green-900 max-w-full z-10" style="width:{{getCurrentHp(player.hp, player.maxHp)}}%">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
+    <div class="absolute bg-slate-300/50 z-50 top-0 bottom-0 left-0 right-0" *ngIf="groupAlive()">
+        <p class="absolute text-9xl text-red-700 font-decorative top-1/2 w-full text-center -translate-y-1/2">Perdu</p>
+    </div>
 </div>
 <router-outlet></router-outlet>
